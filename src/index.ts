@@ -24,6 +24,15 @@ export type Bindings = {
 
 export const app = new Hono<{ Bindings: Bindings }>()
 
+// Add a new route to serve dynamic config.js
+app.get('/config.js', async (c) => {
+    const mainUrls = c.env.MAIN_URLS;
+    const configContent = `window.MAIN_URLS = "${mainUrls}";`;
+    return c.text(configContent, 200, {
+        'Content-Type': 'application/javascript',
+    });
+});
+
 // 登录申请 ##############################################################################
 app.get('/dropboxs/requests', async (c) => {
     return drops.getLogin(c);
