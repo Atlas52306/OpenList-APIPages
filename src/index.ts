@@ -12,6 +12,7 @@ import * as quark from './driver/quarkpan_oa';
 
 export type Bindings = {
     MAIN_URLS: string, baiduyun_ext: string,
+    __STATIC_CONTENT: KVNamespace;
     onedrive_uid: string, onedrive_key: string,
     alicloud_uid: string, alicloud_key: string,
     baiduyun_uid: string, baiduyun_key: string,
